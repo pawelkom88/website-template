@@ -1,0 +1,79 @@
+---
+import { Image } from "astro:assets";
+import "../../styles/hero1.css";
+---
+
+<section id="hero-1059">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h1 class="cs-title">Stitch Mechanics Now Serving Designers & Developers</h1>
+            <p class="cs-text">
+                We are the premier Stitch Design Pack for mechanics and auto body websites of all varieties.
+            </p>
+            <a href="" class="cs-button-solid">Request Appointment</a>
+        </div>
+    </div>
+
+    <!-- Background Image -->
+    <picture class="cs-background">
+    </picture>
+</section>
+<script>
+    // import { createClient } from 'contentful';
+  
+    // Initialize Contentful client
+    // const client = createClient({
+    //   space: 'YOUR_SPACE_ID',
+    //   accessToken: 'YOUR_ACCESS_TOKEN',
+    // });
+  
+    let desktopImageUrl = "";
+    let mobileImageUrl = "";
+    let alt = "";
+  
+    setTimeout(async () => {
+      try {
+        // Fetch the desktop image
+        // const desktopEntry = await client.getEntry("YOUR_DESKTOP_ENTRY_ID");
+        // const desktopImageField = desktopEntry.fields.desktopImageField;
+        desktopImageUrl = "https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/mechanic-m.jpg";
+        alt = "";
+        // desktopImageUrl = desktopImageField.fields.file.url;
+  
+        // Fetch the mobile image
+        // const mobileEntry = await client.getEntry("YOUR_MOBILE_ENTRY_ID");
+        // const mobileImageField = mobileEntry.fields.mobileImageField;
+        mobileImageUrl = "https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/mechanic.jpg";
+        alt = "";
+        // mobileImageUrl = mobileImageField.fields.file.url;
+  
+        // Set the background images
+        const backgroundImage = document.getElementById("hero-1059");
+        if (backgroundImage) {
+          backgroundImage.style.backgroundImage = `url(${desktopImageUrl})`;
+        }
+  
+        const pictureElement = document.querySelector(".cs-background");
+        if (pictureElement) {
+          pictureElement.innerHTML = `
+          <source
+            media="(max-width: 600px)"
+            srcset="${mobileImageUrl}"
+          />
+          <source
+            media="(min-width: 601px)"
+            srcset="${desktopImageUrl}"
+          />
+          <Image
+            src="${desktopImageUrl}"
+            alt="${alt}"
+            width="2250"
+            height="1500"
+            aria-hidden="true"
+          />`;
+        }
+      } catch (error) {
+        console.error("Error fetching images from Contentful:", error);
+      }
+    }, 2000);
+  </script>

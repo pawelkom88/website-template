@@ -1,0 +1,12 @@
+---
+import { contentfulClient } from "../lib/contentful";
+import { Image } from "astro:assets";
+
+const response = await contentfulClient.getEntry(import.meta.env.CONTENTFUL_LOGO);
+const { description, file } = response.fields.logo?.fields || {};
+const logo = file.url;
+---
+
+<a href="/" class="cs-logo" aria-label="back to home">
+  <Image src={logo} alt={description} width="210" height="29" aria-hidden="true" />
+</a>

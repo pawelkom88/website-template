@@ -40,8 +40,8 @@
   left: 0;
   height: 100%;
   width: 100%;
-  /* Makes image act like a background-image */
   object-fit: cover;
+  object-position: top;
 }
 #hero-227 .cs-container {
   width: 100%;

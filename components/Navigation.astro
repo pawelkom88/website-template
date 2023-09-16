@@ -1,12 +1,21 @@
 ---
+import { Image } from "astro:assets";
 import "../styles/navigation.css";
 import TopBar from "./TopBar.astro";
 import NavMenu from "./NavMenu.astro";
-import Logo from "./Logo.astro";
 ---
 
 <header id="cs-navigation">
-  <Logo />
+  <a href="/" class="cs-logo" aria-label="back to home">
+    <!-- contentful -->
+    <Image
+      src="https://d33wubrfki0l68.cloudfront.net/eacc53d5ed856252c244d465620ae964b59aab46/193bd/assets/images/logo.svg"
+      alt="logo"
+      width="210"
+      height="29"
+      aria-hidden="true"
+    />
+  </a>
   <TopBar />
   <div class="cs-bottom-bar">
     <nav class="cs-nav" role="navigation">

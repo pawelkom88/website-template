@@ -12,12 +12,12 @@
   "dependencies": {
     "@astrojs/netlify": "^3.0.1",
     "@astrojs/react": "^3.0.0",
-    "@contentful/rich-text-html-renderer": "^16.1.1",
+    "@contentful/rich-text-html-renderer": "^16.1.2",
     "@fontsource/roboto": "^5.0.8",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "astro": "^3.0.7",
-    "contentful": "^10.5.1",
+    "contentful": "^10.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
