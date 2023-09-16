@@ -10,6 +10,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.0.7"
+    "@astrojs/react": "^3.0.0",
+    "@contentful/rich-text-html-renderer": "^16.1.1",
+    "@fontsource/roboto": "^5.0.8",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "astro": "^3.0.7",
+    "contentful": "^10.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0"
   }
 }
