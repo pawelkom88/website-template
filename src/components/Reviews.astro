@@ -1,80 +1,54 @@
 ---
+import { contentfulClient } from "../lib/contentful";
 import "../styles/reviews.css";
+import Quote from "./icons/Quote.astro";
+import Star from "./icons/Star.astro";
+
+interface ServiceModel {
+  contentTypeId: "testimonial";
+  fields: {
+    [key: string]: string;
+  };
+}
+
+const reviewsData = await contentfulClient.getEntries<ServiceModel>({
+  content_type: "testimonial",
+});
+
+const reviews = reviewsData.items.map(review => {
+  return {
+    name: review.fields.name,
+    review: review.fields.review,
+    rating: review.fields.Rating,
+  };
+});
 ---
 
-<section id="reviews-981">
+<section id="reviews-354">
   <div class="cs-container">
     <div class="cs-content">
       <span class="cs-topper">Testimonials</span>
       <h2 class="cs-title">Trusted by Thousand of People & Companies</h2>
+      <p class="cs-text">
+        At Stitch Cleaning Service, let us help you solve problems so that you can focus on your
+        mission. We support businesses through periods of expansion, succession.
+      </p>
     </div>
     <ul class="cs-card-group">
-      <li class="cs-item">
-        <div class="cs-flex-group">
-          <picture class="cs-picture" aria-hidden="true">
-            <img
-              class="cs-profile"
-              src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile2.jpg"
-              decoding="async"
-              alt="profile"
-              width="50"
-              height="50"
-            />
-          </picture>
-          <span class="cs-name">
-            George Thomas
-            <span class="cs-job">Founder Of Yokoloko</span>
-          </span>
-        </div>
-        <p class="cs-review">
-          Curabitur vitae nunc sed velit dignissim sodales ut. Maecenas ultricies mi eget mauris
-          pharetra et. Et ligula ullamcorper malesuada proin pellentesque diam volutpat commodo.
-        </p>
-      </li>
-      <li class="cs-item">
-        <div class="cs-flex-group">
-          <picture class="cs-picture" aria-hidden="true">
-            <img
-              class="cs-profile"
-              src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile2.jpg"
-              decoding="async"
-              alt="profile"
-              width="50"
-              height="50"
-            />
-          </picture>
-          <span class="cs-name">
-            Mason James
-            <span class="cs-job">Senior Gardener Farmer</span>
-          </span>
-        </div>
-        <p class="cs-review">
-          Curabitur vitae nunc sed velit dignissim sodales ut. Maecenas ultricies mi eget mauris
-          pharetra et. Et ligula ullamcorper malesuada proin pellentesque diam volutpat commodo
-        </p>
-      </li>
-      <li class="cs-item">
-        <div class="cs-flex-group">
-          <picture class="cs-picture" aria-hidden="true">
-            <img
-              class="cs-profile"
-              src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile2.jpg"
-              decoding="async"
-              alt="profile"
-              width="50"
-              height="50"
-            />
-          </picture>
-          <span class="cs-name">
-            George Thomas
-            <span class="cs-job">Founder Of Yokoloko</span>
-          </span>
-        </div>
-        <p class="cs-review">
-          Curabitur vitae nunc sed velit dignissim sodales ut. Maecenas ultricies mi eget mauris
-          pharetra et. Et ligula ullamcorper malesuada proin pellentesque diam volutpat commodo
-        </p>
-      </li>
+      {
+        reviews.map(({ name, rating, review }) => (
+          <li class="cs-item">
+            <Quote size="25" fill="currentColor" />
+            <p class="cs-review">{review}</p>
+            <span class="cs-name">
+              {new Array(rating).fill("⭐").map(() => (
+                <Star size="20" stroke="currentColor" />
+              ))}
+            </span>
+            <span class="cs-job">{name}</span>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </section>

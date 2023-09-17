@@ -8,8 +8,8 @@ const { iconSrc, title, description } = Astro.props;
   <a href="" class="cs-link">
     <Image
       class="cs-icon"
-      src={iconSrc}
-      alt="icon"
+      src={`${iconSrc.file.url}`}
+      alt={iconSrc.description}
       width="40"
       height="40"
       aria-hidden="true"
