@@ -1,6 +1,8 @@
 ---
 import Location from "../components/icons/Location.astro";
 import { contentfulClient } from "../lib/contentful";
+import Phone from "./icons/Phone.astro";
+import Mail from "./icons/Mail.astro";
 
 interface IContactInfo {
   title: string;
@@ -18,14 +20,11 @@ if (response) {
     {
       title: "Call Us",
       href: `tel:${phoneNumber}`,
-      // imageSrc: "https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fphone-stroke.svg",
       details: phoneNumber,
     },
     {
       title: "Send a message",
       href: `mailto:${email}`,
-      // imageSrc:
-      // "https://d33wubrfki0l68.cloudfront.net/1b6c2930ea55b86276bbe68440793d607d43a2ab/84d9d/assets/images/mail-nav.svg",
       details: "Click To Email Us",
     },
     {
@@ -44,8 +43,8 @@ if (response) {
       return (
         <li class="cs-item">
           {link.title === "Location" ? <Location size="25" /> : ""}
-          {link.title === "Send a message" ? <Location size="25" /> : ""}
-          {link.title === "Call Us" ? <Location size="25" /> : ""}
+          {link.title === "Send a message" ? <Mail size="25" /> : ""}
+          {link.title === "Call Us" ? <Phone size="25" fill="red" /> : ""}
 
           <div class="cs-flex">
             <span class="cs-header">{link.title}</span>

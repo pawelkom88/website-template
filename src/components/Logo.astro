@@ -1,10 +1,22 @@
 ---
+import type { EntryFieldTypes } from "contentful/dist/types/types/entry";
 import { contentfulClient } from "../lib/contentful";
 import { Image } from "astro:assets";
+import type { AssetFile } from "contentful/dist/types/types/asset";
 
-const response = await contentfulClient.getEntry(import.meta.env.CONTENTFUL_LOGO);
+interface LogoImage {
+  contentTypeId: "logo";
+  fields: {
+    description: EntryFieldTypes.Text;
+    file: AssetFile;
+    logo: AssetFile;
+  };
+}
+
+const response = await contentfulClient.getEntry<LogoImage>(import.meta.env.CONTENTFUL_LOGO);
+//@ts-ignore
 const { description, file } = response.fields.logo?.fields || {};
-const logo = file.url;
+const logo: string = file.url;
 ---
 
 <a href="/" class="cs-logo" aria-label="back to home">

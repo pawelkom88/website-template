@@ -1,0 +1,76 @@
+---
+import { contentfulClient } from "../lib/contentful";
+import "../styles/service.css";
+import ServiceItem from "./ServiceItem.astro";
+
+interface ServiceModel {
+  contentTypeId: "service";
+  fields: {
+    heading: string;
+    paragraph: string;
+    card1Title: string;
+    card1Description: string;
+  };
+}
+
+interface Service {
+  iconSrc: string;
+  title: string;
+  description: string;
+}
+
+const response = await contentfulClient.getEntry<ServiceModel>(import.meta.env.CONTENTFUL_SERVICE);
+// const { heading, paragraph, card1Title, card1Description } = response.fields || {};
+
+console.log(response);
+
+let serviceItems: Service[] = [];
+
+if (response) {
+  serviceItems = [
+    {
+      iconSrc: "https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/brain.svg",
+      title: "Creative Solutions",
+      description:
+        "We will go ahead that extra mile to ensure our clients' welfare, our working hours convenient to our clients from contact.",
+    },
+    {
+      iconSrc: "https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/users.svg",
+      title: "Professional Team",
+      description:
+        "We will go ahead that extra mile to ensure our clients' welfare, our working hours convenient to our clients from contact.",
+    },
+    {
+      iconSrc: "https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/Layer.svg",
+      title: "Diverse Approach",
+      description:
+        "We will go ahead that extra mile to ensure our clients' welfare, our working hours convenient to our clients from contact.",
+    },
+    {
+      iconSrc: "https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/Layer.svg",
+      title: "Diverse Approach",
+      description:
+        "We will go ahead that extra mile to ensure our clients' welfare, our working hours convenient to our clients from contact.",
+    },
+  ];
+}
+---
+
+<section id="services-1301">
+  <div class="cs-container">
+    <div class="cs-content">
+      <div class="cs-flex-group">
+        <span class="cs-topper">Our Services</span>
+        <h2 class="cs-title">Professional Tax & Accounting Services</h2>
+      </div>
+      <p class="cs-text">
+        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
+        consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua
+        dolor do amet sint. Velit officia consequat duis enim velit mollit.
+      </p>
+    </div>
+    <ul class="cs-card-group">
+      {serviceItems.map((item, index) => <ServiceItem key={index} {...item} />)}
+    </ul>
+  </div>
+</section>

@@ -22,30 +22,30 @@ const {
     <Navigation />
     <slot />
     <Footer />
+    <style is:global>
+      :root {
+        --text: #181c12;
+        --background: #fdfdfc;
+        --primary: #3b442c;
+        --secondary: #e2e7da;
+        --dark: #000;
+        --white: #fff;
+        --accent: #81955f;
+        --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+        --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+        --bodyFontSize: 1rem;
+        --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+      }
+      html {
+        font-family: "Roboto", sans-serif;
+        background-color: var(--background);
+        color: var(--text);
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
   </body><!-- RESET CSS ! --><!-- FONT - can be fontsource --><!-- CHANGE img to IMAGE --><!-- allow contentful images in config file -->
-  <style is:global>
-    :root {
-      --text: #181c12;
-      --background: #fdfdfc;
-      --primary: #3b442c;
-      --secondary: #e2e7da;
-      --dark: #000;
-      --white: #fff;
-      --accent: #81955f;
-      --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-      --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
-      --bodyFontSize: 1rem;
-      --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
-    }
-    html {
-      font-family: "Roboto", sans-serif;
-      background-color: var(--background);
-      color: var(--text);
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-  </style>
 </html>

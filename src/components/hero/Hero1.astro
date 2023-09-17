@@ -5,7 +5,7 @@ import { contentfulClient } from "../../lib/contentful";
 import type { EntryFieldTypes } from "contentful/dist/types/types/entry";
 import type { AssetFields } from "contentful/dist/types/types/asset";
 
-interface HeroImage {
+export interface HeroModel {
   contentTypeId: "hero";
   fields: {
     heading: EntryFieldTypes.Text;
@@ -16,7 +16,7 @@ interface HeroImage {
   };
 }
 
-const response = await contentfulClient.getEntry<HeroImage>(import.meta.env.CONTENTFUL_HERO);
+const response = await contentfulClient.getEntry<HeroModel>(import.meta.env.CONTENTFUL_HERO);
 const {
   heading,
   paragraph,
@@ -26,9 +26,9 @@ const {
 } = response.fields || {};
 
 //@ts-ignore
-const heroImage: AssetFields = image?.fields || {};
+const heroDesktopImage: AssetFields = image?.fields || {};
 //@ts-ignore
-const mImage: AssetFields = mobileImage?.fields || {};
+const heroMobileImage: AssetFields = mobileImage?.fields || {};
 ---
 
 <section id="hero-1059">
@@ -44,11 +44,11 @@ const mImage: AssetFields = mobileImage?.fields || {};
 
   <!-- Background Image -->
   <picture class="cs-background">
-    <source media="(max-width: 600px)" srcset={`https:${mImage?.file?.url}`} />
-    <source media="(min-width: 601px)" srcset={`https:${heroImage?.file?.url}`} />
+    <source media="(max-width: 600px)" srcset={`https:${heroMobileImage?.file?.url}`} />
+    <source media="(min-width: 601px)" srcset={`https:${heroDesktopImage?.file?.url}`} />
     <Image
-      src={`https:${heroImage?.file?.url}`}
-      alt={heroImage.description!}
+      src={`https:${heroDesktopImage?.file?.url}`}
+      alt={heroDesktopImage.description!}
       width="2250"
       height="1500"
       aria-hidden="true"
