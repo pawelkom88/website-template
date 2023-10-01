@@ -5,11 +5,18 @@ import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
   image: {
-    remotePatterns: [{
-      protocol: "https"
-    }]
+    remotePatterns: [
+      {
+        protocol: "https",
+      },
+    ],
   },
-  output: 'server',
+  vite: {
+    ssr: {
+      noExternal: ["path-to-regexp"],
+    },
+  },
+  output: "server",
   adapter: netlify(),
-  integrations: [react()]
+  integrations: [react()],
 });
