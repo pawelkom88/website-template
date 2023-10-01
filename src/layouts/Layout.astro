@@ -1,18 +1,12 @@
 ---
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
+import Navigation from "../components/navigation/Navigation.astro";
+import Footer from "../components/footer/Footer.astro";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import MainHead from "../components/MainHead.astro";
+import MainHead from "../seo/main-head/MainHead.astro";
 
-const {
-  title = "My Astro Blog123",
-  description = "My musings about the Astro framework",
-  image,
-  frontmatter,
-  robots,
-} = Astro.props;
+const { title = "Template", description = "Template", image, frontmatter, robots } = Astro.props;
 ---
 
 <!doctype html>
@@ -26,11 +20,12 @@ const {
       :root {
         --text: #181c12;
         --background: #fdfdfc;
-        --primary: #3b442c;
-        --secondary: #e2e7da;
+        --background2: #f7f7f7;
+        --primary: #0a6c78;
+        --secondary: #87c9ce;
         --dark: #000;
         --white: #fff;
-        --accent: #81955f;
+        --accent: #934461;
         --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
         --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
         --bodyFontSize: 1rem;
@@ -45,6 +40,12 @@ const {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+      }
+
+      .cs-topper {
+        font-size: var(--topperFontSize);
+        font-weight: 700;
+        color: var(--primary);
       }
     </style>
   </body><!-- RESET CSS ! --><!-- FONT - can be fontsource --><!-- CHANGE img to IMAGE --><!-- allow contentful images in config file -->

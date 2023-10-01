@@ -1,4 +1,4 @@
-import siteData from "../data/siteData.json";
+import siteData from "../seo/siteData.json";
 import { slugify } from "./utils";
 
 export default function jsonLDGenerator({

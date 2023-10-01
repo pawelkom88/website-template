@@ -1,14 +1,8 @@
-/*-- -------------------------- -->
-<---            CTA             -->
-<--- -------------------------- -*/
-
-/* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   #cta-697 {
-    /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
-    font-family: "Roboto", "Arial", sans-serif;
     padding: var(--sectionPadding);
-    background-color: var(--primary);
+    background-color: var(--accent);
+    color: var(--white);
     position: relative;
     z-index: 1;
   }
@@ -19,18 +13,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* 48px - 64px */
     gap: clamp(3rem, 6vw, 4rem);
   }
   #cta-697 .cs-content {
-    /* set text align to left if content needs to be left aligned */
     text-align: center;
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* centers content horizontally, set to flex-start to left align */
     align-items: center;
-    /* 48px - 64px */
     gap: clamp(3rem, 6vw, 4rem);
   }
   #cta-697 .cs-title {
@@ -38,29 +28,25 @@
     font-weight: 900;
     line-height: 1.2em;
     text-align: inherit;
-    /* 25 characters wide including spaces */
     max-width: 25ch;
     margin: 0;
-    color: var(--bodyTextColorWhite);
     position: relative;
   }
   #cta-697 .cs-button-solid {
-    font-size: 1rem;
-    /* 46px - 56px */
+    font-size: 1.3rem;
     line-height: clamp(2.875rem, 5.5vw, 3.5rem);
     text-decoration: none;
     font-weight: 700;
     text-align: center;
     margin: 0;
-    color: var(--headerColor);
     min-width: 9.375rem;
     padding: 0 1.5rem;
     background-color: var(--secondary);
+    color: var(--white);
     border-radius: 0.25rem;
     display: inline-block;
     position: relative;
     z-index: 1;
-    /* prevents padding from adding to the width */
     box-sizing: border-box;
   }
   #cta-697 .cs-button-solid:before {
@@ -68,7 +54,7 @@
     position: absolute;
     height: 100%;
     width: 0%;
-    background: #000;
+    background: var(--primary);
     opacity: 1;
     top: 0;
     left: 0;
@@ -87,7 +73,6 @@
     top: 0;
     left: 0;
     z-index: -1;
-    /* makes it act like a background image */
     object-fit: cover;
   }
 }

@@ -1,0 +1,48 @@
+---
+import "./sideByside1.css";
+import { Image } from "astro:assets";
+import { getSideBySideIntro } from "../../lib/helpers/sideByside";
+
+const { title, mainImageData, heading, paragraph } = await getSideBySideIntro();
+---
+
+<section id="sbs-1308">
+  <div class="cs-container">
+    <!-- Left Image Section -->
+    <div class="cs-image-group">
+      <!--Floating Box-->
+      <div class="cs-box">
+        <span class="cs-desc">{title}</span>
+      </div>
+      <!--Image-->
+      <picture class="cs-picture">
+        <source media="(max-width: 600px)" srcset={mainImageData} />
+        <source media="(min-width: 601px)" srcset={mainImageData} />
+        <Image src={mainImageData} alt="meeting" width="630" height="630" aria-hidden="true" />
+      </picture>
+    </div>
+    <!-- Right Content Section-->
+    <div class="cs-content">
+      <span class="cs-topper">About Us</span>
+      <h2 class="cs-title">{heading}</h2>
+      <p class="cs-text">
+        {paragraph}
+      </p>
+      <a class="cs-button-solid" aria-label="learn more about our programs" href="">Learn More</a>
+      <ul class="cs-ul">
+        <li class="cs-item">
+          <span class="cs-number">150 +</span>
+          <h3 class="cs-h3">Staff on three continents</h3>
+        </li>
+        <li class="cs-item">
+          <span class="cs-number">700 +</span>
+          <h3 class="cs-h3">Consulting engagements</h3>
+        </li>
+        <li class="cs-item">
+          <span class="cs-number">180 +</span>
+          <h3 class="cs-h3">Learning community members</h3>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

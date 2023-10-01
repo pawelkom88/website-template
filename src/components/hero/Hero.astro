@@ -1,23 +1,13 @@
 ---
 import { Image } from "astro:assets";
-import "../../styles/hero.css";
-import { contentfulClient } from "../../lib/contentful";
-import type { HeroModel } from "./Hero1.astro";
+import "./hero.css";
+import { getHeroSection } from "../../lib/helpers/hero";
 
-const response = await contentfulClient.getEntry<HeroModel>(import.meta.env.CONTENTFUL_HERO);
-const {
-  heading,
-  paragraph,
-  image,
-  mobileImage,
-  callToAction = "Request Appointment",
-} = response.fields || {};
-
-//@ts-ignore
-const heroDesktopImage: AssetFields = image?.fields || {};
+const { heading, paragraph, heroDesktopImage, heroMobileImage, callToAction } =
+  await getHeroSection();
 ---
 
-<section style=`background-image: url(https:${heroDesktopImage?.file?.url});` id="hero-227">
+<section style=`background-image: url(https:${heroDesktopImage});` id="hero-227">
   <div class="cs-container">
     <div class="cs-flex-group">
       <span class="cs-topper">intro</span>

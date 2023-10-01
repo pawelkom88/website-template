@@ -1,42 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import "../styles/faq.css";
-import { contentfulClient } from "../lib/contentful";
-import { transformResponseToObjectArray } from "../helpers/helpers";
-
-interface FaqModel {
-  contentTypeId: "faq";
-  fields: Record<string, string>;
-}
-
-interface FaqCardsModel {
-  contentTypeId: "faqCards";
-  fields: Record<string, string>;
-}
-
-const faqData = await contentfulClient.getEntries<FaqModel>({
-  content_type: "faq",
-});
-
-const faqCardsData = await contentfulClient.getEntries<FaqCardsModel>({
-  content_type: "faqCards",
-});
-
-const faqItems = faqData.items.map(review => {
-  return {
-    question: review.fields.question,
-    answer: review.fields.answer,
-  };
-});
-
-const cardData = faqCardsData.items.map(review => {
-  return {
-    //@ts-ignore
-    iconSrc: review.fields.faqCardIcon.fields.file.url,
-    stat: review.fields.faqCardStat,
-    description: review.fields.faqCardDescription,
-  };
-});
+import "./faq.css";
+// import { transformResponseToObjectArray } from "../../helpers/helpers";
+import { getFaq } from "../../lib/helpers/faq";
+const { faqItems, cardData } = await getFaq();
 ---
 
 <br />

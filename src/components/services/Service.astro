@@ -1,0 +1,23 @@
+---
+import "./service.css";
+import ServiceItem from "./ServiceItem.astro";
+import { getServices } from "../../lib/helpers/service";
+const { serviceTypography, serviceItems } = await getServices();
+---
+
+<br />
+<section id="services-1301">
+  <div class="cs-container">
+    <div class="cs-content">
+      <div class="cs-flex-group">
+        <span class="cs-topper">Our Services</span>
+        <h2 class="cs-title">{serviceTypography.heading}</h2>
+      </div>
+      <p class="cs-text">{serviceTypography.paragraph}</p>
+    </div>
+    <ul class="cs-card-group">
+      {serviceItems.reverse().map((item, index) => <ServiceItem key={index} {...item} />)}
+    </ul>
+  </div>
+</section>
+<br />

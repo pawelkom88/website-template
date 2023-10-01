@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import "../styles/footer.css";
+import "./footer.css";
 import {
   footerLinks1,
   footerLinks2,
@@ -8,8 +8,8 @@ import {
   navigationLinks,
   socialMediaLinks,
   currentDate,
-} from "../data/footer.ts";
-import Logo from "./Logo.astro";
+} from "./footer.ts";
+import Logo from "../logo/Logo.astro";
 ---
 
 <section id="cs-footer-710">
@@ -134,12 +134,12 @@ import Logo from "./Logo.astro";
     </div>
   </div>
   <!--SVG Waves-->
-  <Image
+  <!-- <Image
     class="cs-graphic"
     src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Ffooter-waves.svg"
     alt="waves"
     aria-hidden="true"
     width="1920"
     height="616"
-  />
+  /> -->
 </section>

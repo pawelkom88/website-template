@@ -1,34 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import "../../styles/hero1.css";
-import { contentfulClient } from "../../lib/contentful";
-import type { EntryFieldTypes } from "contentful/dist/types/types/entry";
-import type { AssetFields } from "contentful/dist/types/types/asset";
+import "./hero1.css";
+import { getHeroSection } from "../../lib/helpers/hero";
 
-export interface HeroModel {
-  contentTypeId: "hero";
-  fields: {
-    heading: EntryFieldTypes.Text;
-    paragraph: EntryFieldTypes.Text;
-    image: AssetFields;
-    mobileImage: AssetFields;
-    callToAction: EntryFieldTypes.Text;
-  };
-}
-
-const response = await contentfulClient.getEntry<HeroModel>(import.meta.env.CONTENTFUL_HERO);
-const {
-  heading,
-  paragraph,
-  image,
-  mobileImage,
-  callToAction = "Request Appointment",
-} = response.fields || {};
-
-//@ts-ignore
-const heroDesktopImage: AssetFields = image?.fields || {};
-//@ts-ignore
-const heroMobileImage: AssetFields = mobileImage?.fields || {};
+const { heading, paragraph, heroDesktopImage, heroMobileImage, callToAction } =
+  await getHeroSection();
 ---
 
 <section id="hero-1059">
@@ -42,13 +18,12 @@ const heroMobileImage: AssetFields = mobileImage?.fields || {};
     </div>
   </div>
 
-  <!-- Background Image -->
   <picture class="cs-background">
-    <source media="(max-width: 600px)" srcset={`https:${heroMobileImage?.file?.url}`} />
-    <source media="(min-width: 601px)" srcset={`https:${heroDesktopImage?.file?.url}`} />
+    <source media="(max-width: 600px)" srcset={`https:${heroMobileImage}`} />
+    <source media="(min-width: 601px)" srcset={`https:${heroDesktopImage}`} />
     <Image
-      src={`https:${heroDesktopImage?.file?.url}`}
-      alt={heroDesktopImage.description!}
+      src={`https:${heroDesktopImage}`}
+      alt="hero image"
       width="2250"
       height="1500"
       aria-hidden="true"

@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import "./hero2.css";
+import { getHeroSection } from "../../lib/helpers/hero";
+
+const { heading, paragraph, heroDesktopImage, callToAction } = await getHeroSection();
+---
+
+<section id="hero-408">
+  <div class="cs-container">
+    <div class="cs-content">
+      <h2 class="cs-title"><span class="cs-color">{heading}</span></h2>
+      <p class="cs-text">
+        {paragraph}
+      </p>
+      <a href="" class="cs-button-solid">{callToAction}</a>
+      <a href="" class="cs-button-transparent">Our Services</a>
+      <!-- <span class="cs-header">Trusted by:</span> -->
+      <!-- <div class="cs-logo-group">
+        <Image
+          class="cs-logo"
+          src="https://csimg.nyc3.digitaloceanspaces.com/Hero/logo1.svg"
+          alt="logo"
+          width="113"
+          height="31"
+          decoding="async"
+        />
+        <Image
+          class="cs-logo"
+          src="https://csimg.nyc3.digitaloceanspaces.com/Hero/logo2.svg"
+          alt="logo"
+          width="113"
+          height="40"
+          decoding="async"
+        />
+
+        <Image
+          class="cs-logo"
+          src="https://csimg.nyc3.digitaloceanspaces.com/Hero/logo3.svg"
+          alt="logo"
+          width="113"
+          height="30"
+          decoding="async"
+        />
+        <Image
+          class="cs-logo"
+          src="https://csimg.nyc3.digitaloceanspaces.com/Hero/logo4.svg"
+          alt="logo"
+          width="113"
+          height="37"
+          decoding="async"
+        />
+      </div> -->
+    </div>
+    <div class="cs-stat-group">
+      <picture class="cs-background">
+        <source media="(max-width: 600px)" srcset={heroDesktopImage} />
+        <source media="(min-width: 601px)" srcset={heroDesktopImage} />
+        <Image
+          src={heroDesktopImage}
+          alt="hero image"
+          width="842"
+          height="737"
+          aria-hidden="true"
+        />
+      </picture>
+      <div class="cs-stat-box">
+        <span class="cs-stat">
+          263
+          <span class="cs-desc">Happy Families</span>
+        </span>
+      </div>
+      <div class="cs-stat-box">
+        <span class="cs-stat">
+          5/5
+          <span class="cs-desc">Google Rating</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

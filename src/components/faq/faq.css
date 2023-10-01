@@ -2,7 +2,6 @@
 @media only screen and (min-width: 0rem) {
   #faq-1143 {
     /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
-    font-family: "Roboto", "Arial", sans-serif;
     padding: var(--sectionPadding);
     background: #f7f7f7;
   }

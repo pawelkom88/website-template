@@ -1,0 +1,46 @@
+---
+import "./sideByside.css";
+import { Image } from "astro:assets";
+import { getSideBySideIntro } from "../../lib/helpers/sideByside";
+
+const { title, numberOfYears, mainImageData, backgroundImageData, heading, paragraph } =
+  await getSideBySideIntro();
+---
+
+<br />
+<section id="sbsr-298">
+  <div class="cs-container">
+    <div class="cs-image-group">
+      <div class="cs-box">
+        <span class="cs-number">{numberOfYears}</span>
+        <span class="cs-desc">{title}</span>
+        <Image
+          class="cs-box-picture"
+          src={`https:${backgroundImageData || ""}`}
+          alt={backgroundImageData || "background image"}
+          width="521"
+          height="672"
+          aria-hidden="true"
+        />
+      </div>
+      <Image
+        class="cs-picture"
+        src={`https:${mainImageData}`}
+        alt={mainImageData || "main image"}
+        width="521"
+        height="672"
+        aria-hidden="true"
+      />
+    </div>
+    <div class="cs-content">
+      <span class="cs-topper">Who We Are</span>
+      <h2 class="cs-title">{heading}</h2>
+      <p class="cs-text">
+        {paragraph}
+      </p>
+      <a class="cs-button-solid" aria-label="learn more about our programs" href="/about-us"
+        >Learn More</a
+      >
+    </div>
+  </div>
+</section>

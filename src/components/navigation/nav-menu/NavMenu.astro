@@ -1,29 +1,6 @@
 ---
 import { Image } from "astro:assets";
-
-interface NavItem {
-  text: string;
-  href?: string;
-  dropdown?: boolean;
-  iconSrc?: string;
-  dropdownItems?: Partial<NavItem>[];
-}
-
-const navItems: NavItem[] = [
-  { text: "Home", href: "/", dropdown: false },
-  { text: "About", href: "/about-our-company", dropdown: false },
-  {
-    text: "Services",
-    dropdown: true,
-    iconSrc:
-      "https://d33wubrfki0l68.cloudfront.net/ddd4ab9e3e9a3f35d87c06ac91bcc6db9de375e5/61d7d/assets/images/down.svg",
-    dropdownItems: [
-      { text: "Service 1", href: "/service1" },
-      { text: "Service 2", href: "/service2" },
-    ],
-  },
-  { text: "Contact", href: "/contact-us", dropdown: false },
-];
+import { navItems } from "./data";
 ---
 
 <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
@@ -50,7 +27,7 @@ const navItems: NavItem[] = [
 
         {item.dropdown && (
           <ul class="cs-drop-ul">
-            {item.dropdownItems!.map((dropdownItem) => (
+            {item.dropdownItems!.map(dropdownItem => (
               <li class="cs-drop-li">
                 <a href={dropdownItem.href} class="cs-li-link cs-drop-link">
                   {dropdownItem.text}

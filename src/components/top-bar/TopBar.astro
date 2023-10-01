@@ -1,0 +1,29 @@
+---
+import Location from "../icons/Location.astro";
+import Phone from "../icons/Phone.astro";
+import Mail from "../icons/Mail.astro";
+import { getTopBarLinks } from "../../lib/helpers/top-bar";
+
+const topBarLinks = await getTopBarLinks();
+---
+
+<ul class="cs-top-bar">
+  {
+    topBarLinks.map(link => {
+      return (
+        <li class="cs-item">
+          {link.title === "Location" ? <Location size="25" /> : ""}
+          {link.title === "Send a message" ? <Mail size="25" /> : ""}
+          {link.title === "Call Us" ? <Phone size="25" fill="red" /> : ""}
+
+          <div class="cs-flex">
+            <span class="cs-header">{link.title}</span>
+            <a href={link.href} class="cs-link" target="_blank" rel="noopener">
+              {link.details}
+            </a>
+          </div>
+        </li>
+      );
+    })
+  }
+</ul>

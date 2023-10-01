@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+import "./service1.css";
+const { iconSrc, title, description } = Astro.props;
+---
+
+<li class="cs-item">
+  <a href="" class="cs-link">
+    <picture class="cs-picture">
+      <Image
+        class="cs-icon"
+        src={`${iconSrc}` || ""}
+        alt={iconSrc.description || ""}
+        alt="icon"
+        width="33"
+        height="38"
+        aria-hidden="true"
+      />
+    </picture>
+
+    <h3 class="cs-h3">{title}</h3>
+    <p class="cs-item-text">{description}</p>
+  </a>
+</li>
